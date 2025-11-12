@@ -7,7 +7,7 @@ const AppPage = () => {
   const { appName } = useParams();
 
   const handleBack = () => {
-    navigate("/");
+    navigate("/home");
   };
 
   const displayName = appName
