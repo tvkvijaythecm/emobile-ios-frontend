@@ -47,15 +47,16 @@ export default {
           DEFAULT: "hsl(var(--card))",
           foreground: "hsl(var(--card-foreground))",
         },
-        sidebar: {
-          DEFAULT: "hsl(var(--sidebar-background))",
-          foreground: "hsl(var(--sidebar-foreground))",
-          primary: "hsl(var(--sidebar-primary))",
-          "primary-foreground": "hsl(var(--sidebar-primary-foreground))",
-          accent: "hsl(var(--sidebar-accent))",
-          "accent-foreground": "hsl(var(--sidebar-accent-foreground))",
-          border: "hsl(var(--sidebar-border))",
-          ring: "hsl(var(--sidebar-ring))",
+        ios: {
+          blue: "hsl(var(--ios-blue))",
+          green: "hsl(var(--ios-green))",
+          red: "hsl(var(--ios-red))",
+          orange: "hsl(var(--ios-orange))",
+          yellow: "hsl(var(--ios-yellow))",
+          teal: "hsl(var(--ios-teal))",
+          pink: "hsl(var(--ios-pink))",
+          indigo: "hsl(var(--ios-indigo))",
+          gray: "hsl(var(--ios-gray))",
         },
       },
       borderRadius: {
@@ -80,10 +81,51 @@ export default {
             height: "0",
           },
         },
+        "bounce-in": {
+          "0%": {
+            transform: "scale(0.3)",
+            opacity: "0",
+          },
+          "50%": {
+            transform: "scale(1.05)",
+          },
+          "70%": {
+            transform: "scale(0.9)",
+          },
+          "100%": {
+            transform: "scale(1)",
+            opacity: "1",
+          },
+        },
+        "bounce-out": {
+          "0%": {
+            transform: "scale(1)",
+            opacity: "1",
+          },
+          "100%": {
+            transform: "scale(0.3)",
+            opacity: "0",
+          },
+        },
+        "wiggle": {
+          "0%, 100%": { transform: "rotate(-2deg)" },
+          "50%": { transform: "rotate(2deg)" },
+        },
+        "pulse-icon": {
+          "0%, 100%": { transform: "scale(1)" },
+          "50%": { transform: "scale(0.95)" },
+        },
       },
       animation: {
         "accordion-down": "accordion-down 0.2s ease-out",
         "accordion-up": "accordion-up 0.2s ease-out",
+        "bounce-in": "bounce-in 0.5s cubic-bezier(0.68, -0.55, 0.265, 1.55)",
+        "bounce-out": "bounce-out 0.3s cubic-bezier(0.68, -0.55, 0.265, 1.55)",
+        "wiggle": "wiggle 0.3s ease-in-out",
+        "pulse-icon": "pulse-icon 0.2s ease-in-out",
+      },
+      backdropBlur: {
+        xs: "2px",
       },
     },
   },
