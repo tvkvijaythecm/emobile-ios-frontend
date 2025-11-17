@@ -128,8 +128,8 @@ const LockScreen = () => {
         </div>
 
         {/* Bottom Hint */}
-        <div className="text-white/60 text-xs text-center">
-          <p>Swipe up to unlock</p>
+        <div className="text-white/80 text-sm text-center font-medium">
+          <p>Password: 1234</p>
         </div>
       </div>
 
