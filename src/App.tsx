@@ -8,6 +8,8 @@ import LockScreen from "./pages/LockScreen";
 import Home from "./pages/Home";
 import AppPage from "./pages/AppPage";
 import SettingsApp from "./pages/SettingsApp";
+import AboutPage from "./pages/AboutPage";
+import CameraApp from "./pages/CameraApp";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
@@ -23,6 +25,8 @@ const App = () => (
             <Route path="/" element={<LockScreen />} />
             <Route path="/home" element={<Home />} />
             <Route path="/app/settings" element={<SettingsApp />} />
+            <Route path="/app/about" element={<AboutPage />} />
+            <Route path="/app/camera" element={<CameraApp />} />
             <Route path="/app/:appName" element={<AppPage />} />
             {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
             <Route path="*" element={<NotFound />} />

@@ -1,14 +1,16 @@
 import { useNavigate } from "react-router-dom";
-import { ArrowLeft, ChevronRight, Moon, Sun, Smartphone, Info, HardDrive, Cpu, Battery, Wifi } from "lucide-react";
+import { ArrowLeft, ChevronRight, Moon, Sun, Smartphone, Info, HardDrive, Cpu, Battery, Wifi, Edit2 } from "lucide-react";
 import { StatusBar } from "@/components/StatusBar";
 import { useTheme } from "next-themes";
 import { Switch } from "@/components/ui/switch";
+import { Input } from "@/components/ui/input";
 import { useState } from "react";
 
 const SettingsApp = () => {
   const navigate = useNavigate();
   const { theme, setTheme } = useTheme();
   const [deviceName, setDeviceName] = useState("My iPhone");
+  const [isEditingName, setIsEditingName] = useState(false);
 
   const handleBack = () => {
     navigate("/home");
@@ -100,11 +102,26 @@ const SettingsApp = () => {
             <div className="w-16 h-16 rounded-full bg-gradient-to-br from-primary to-accent flex items-center justify-center text-white text-2xl font-semibold">
               {deviceName.charAt(0)}
             </div>
-            <div>
-              <h2 className="text-lg font-semibold text-foreground">{deviceName}</h2>
+            <div className="flex-1">
+              {isEditingName ? (
+                <Input
+                  value={deviceName}
+                  onChange={(e) => setDeviceName(e.target.value)}
+                  onBlur={() => setIsEditingName(false)}
+                  autoFocus
+                  className="text-lg font-semibold mb-1"
+                />
+              ) : (
+                <h2 className="text-lg font-semibold text-foreground">{deviceName}</h2>
+              )}
               <p className="text-sm text-muted-foreground">Apple ID, iCloud, Media & Purchases</p>
             </div>
-            <ChevronRight className="w-5 h-5 text-muted-foreground ml-auto" />
+            {!isEditingName && (
+              <button onClick={() => setIsEditingName(true)}>
+                <Edit2 className="w-5 h-5 text-muted-foreground" />
+              </button>
+            )}
+            <ChevronRight className="w-5 h-5 text-muted-foreground" />
           </div>
         </div>
 
@@ -134,6 +151,7 @@ const SettingsApp = () => {
             label="Device Name" 
             value={deviceName}
             iconColor="hsl(211, 100%, 50%)"
+            onClick={() => setIsEditingName(true)}
           />
           <SettingRow 
             icon={Info} 
@@ -192,6 +210,7 @@ const SettingsApp = () => {
             icon={Info} 
             label="About" 
             iconColor="hsl(240, 5%, 65%)"
+            onClick={() => navigate("/app/about")}
           />
           <SettingRow 
             icon={Smartphone} 
