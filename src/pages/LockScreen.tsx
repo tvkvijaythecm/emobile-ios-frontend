@@ -66,7 +66,7 @@ const LockScreen = () => {
 
       {/* Lock Screen Content */}
       <div className="relative z-10 flex flex-col items-center justify-between h-screen pt-32 pb-12">
-        {/* Hello Text */}
+        {/* eMobile Text */}
         <div className="text-center">
           <h1 
             className="text-8xl font-light text-white"
@@ -75,7 +75,7 @@ const LockScreen = () => {
               textShadow: "0 2px 20px rgba(0,0,0,0.1)"
             }}
           >
-            hello
+            eMobile
           </h1>
         </div>
 
