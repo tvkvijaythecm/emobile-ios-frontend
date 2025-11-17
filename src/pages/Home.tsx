@@ -5,7 +5,7 @@ import { SearchBar } from "@/components/SearchBar";
 import { CalendarWidget } from "@/components/CalendarWidget";
 import { WeatherWidget } from "@/components/WeatherWidget";
 import { 
-  Video, 
+  Lock, 
   Calendar, 
   Image, 
   Camera, 
@@ -19,13 +19,14 @@ import {
   ShoppingBag,
   Map,
   Heart,
-  Wallet,
-  Settings
+  Calculator,
+  Settings,
+  Globe
 } from "lucide-react";
 
 const Home = () => {
   const apps = [
-    { icon: Video, label: "FaceTime", color: "hsl(142, 72%, 45%)", route: "/app/facetime" },
+    { icon: Lock, label: "Lock", color: "hsl(240, 5%, 15%)", route: "/" },
     { icon: Calendar, label: "Calendar", color: "hsl(0, 92%, 60%)", route: "/app/calendar" },
     { icon: Image, label: "Photos", color: "hsl(211, 100%, 50%)", route: "/app/photos" },
     { icon: Camera, label: "Camera", color: "hsl(240, 5%, 65%)", route: "/app/camera" },
@@ -39,8 +40,9 @@ const Home = () => {
     { icon: ShoppingBag, label: "App Store", color: "hsl(211, 100%, 50%)", route: "/app/appstore" },
     { icon: Map, label: "Maps", color: "hsl(142, 72%, 45%)", route: "/app/maps" },
     { icon: Heart, label: "Health", color: "hsl(0, 92%, 60%)", route: "/app/health" },
-    { icon: Wallet, label: "Wallet", color: "hsl(240, 5%, 15%)", route: "/app/wallet" },
+    { icon: Calculator, label: "Calculator", color: "hsl(25, 100%, 60%)", route: "/app/calculator" },
     { icon: Settings, label: "Settings", color: "hsl(240, 5%, 65%)", route: "/app/settings" },
+    { icon: Globe, label: "Browser", color: "hsl(211, 100%, 50%)", route: "/app/browser" },
   ];
 
   return (
@@ -69,7 +71,7 @@ const Home = () => {
         {/* Widgets Grid */}
         <div className="grid grid-cols-4 gap-3 mb-6">
           <CalendarWidget />
-          <AppIcon icon={Video} label="FaceTime" color="hsl(142, 72%, 45%)" route="/app/facetime" />
+          <AppIcon icon={Lock} label="Lock" color="hsl(240, 5%, 15%)" route="/" />
           <AppIcon icon={Calendar} label="Calendar" color="hsl(0, 92%, 60%)" route="/app/calendar" />
           <AppIcon icon={Image} label="Photos" color="hsl(211, 100%, 50%)" route="/app/photos" />
           <AppIcon icon={Camera} label="Camera" color="hsl(240, 5%, 65%)" route="/app/camera" />
