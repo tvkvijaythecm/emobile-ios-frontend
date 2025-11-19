@@ -16,6 +16,7 @@ import BrowserApp from "./pages/BrowserApp";
 import CalculatorApp from "./pages/CalculatorApp";
 import TVApp from "./pages/TVApp";
 import CalendarApp from "./pages/CalendarApp";
+import WallpaperPage from "./pages/WallpaperPage";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
@@ -30,8 +31,9 @@ const App = () => (
           <Routes>
             <Route path="/" element={<LockScreen />} />
             <Route path="/home" element={<Home />} />
-            <Route path="/app/settings" element={<SettingsApp />} />
-            <Route path="/app/about" element={<AboutPage />} />
+          <Route path="/app/settings" element={<SettingsApp />} />
+          <Route path="/app/wallpaper" element={<WallpaperPage />} />
+          <Route path="/app/about" element={<AboutPage />} />
             <Route path="/app/camera" element={<CameraApp />} />
             <Route path="/app/clock" element={<ClockApp />} />
             <Route path="/app/notes" element={<NotesApp />} />
