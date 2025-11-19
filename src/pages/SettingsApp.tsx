@@ -1,5 +1,6 @@
+
 import { useNavigate } from "react-router-dom";
-import { ArrowLeft, ChevronRight, Moon, Sun, Smartphone, Info, HardDrive, Cpu, Battery, Wifi, Edit2, Image as ImageIcon } from "lucide-react";
+import { ArrowLeft, ChevronRight, Moon, Sun, Smartphone, Info, HardDrive, Cpu, Battery, Wifi, Edit2 } from "lucide-react";
 import { StatusBar } from "@/components/StatusBar";
 import { useTheme } from "next-themes";
 import { Switch } from "@/components/ui/switch";
@@ -11,58 +12,6 @@ const SettingsApp = () => {
   const { theme, setTheme } = useTheme();
   const [deviceName, setDeviceName] = useState("My iPhone");
   const [isEditingName, setIsEditingName] = useState(false);
-  const [selectedWallpaper, setSelectedWallpaper] = useState(0);
-
-  const wallpapers = [
-    {
-      id: 0,
-      name: "Default",
-      gradient: `linear-gradient(135deg, 
-        hsl(195, 100%, 50%) 0%,
-        hsl(180, 60%, 55%) 20%,
-        hsl(45, 100%, 65%) 40%,
-        hsl(25, 100%, 60%) 60%,
-        hsl(200, 80%, 60%) 80%,
-        hsl(210, 90%, 40%) 100%)`
-    },
-    {
-      id: 1,
-      name: "Sunset",
-      gradient: `linear-gradient(135deg, 
-        hsl(330, 100%, 60%) 0%,
-        hsl(15, 100%, 60%) 50%,
-        hsl(45, 100%, 60%) 100%)`
-    },
-    {
-      id: 2,
-      name: "Ocean",
-      gradient: `linear-gradient(135deg, 
-        hsl(200, 90%, 40%) 0%,
-        hsl(200, 80%, 60%) 50%,
-        hsl(195, 100%, 50%) 100%)`
-    },
-    {
-      id: 3,
-      name: "Forest",
-      gradient: `linear-gradient(135deg, 
-        hsl(140, 60%, 30%) 0%,
-        hsl(120, 50%, 50%) 50%,
-        hsl(90, 60%, 60%) 100%)`
-    },
-    {
-      id: 4,
-      name: "Purple Haze",
-      gradient: `linear-gradient(135deg, 
-        hsl(270, 80%, 40%) 0%,
-        hsl(290, 70%, 50%) 50%,
-        hsl(310, 80%, 60%) 100%)`
-    }
-  ];
-
-  const handleWallpaperChange = (wallpaperId: number) => {
-    setSelectedWallpaper(wallpaperId);
-    localStorage.setItem('selectedWallpaper', wallpaperId.toString());
-  };
 
   const handleBack = () => {
     navigate("/home");
@@ -198,33 +147,12 @@ const SettingsApp = () => {
               onCheckedChange={(checked) => setTheme(checked ? "dark" : "light")}
             />
           </div>
-        </SettingSection>
-
-        {/* Wallpaper Section */}
-        <SettingSection title="Wallpaper">
-          <div className="p-4">
-            <div className="grid grid-cols-3 gap-3">
-              {wallpapers.map((wallpaper) => (
-                <div
-                  key={wallpaper.id}
-                  onClick={() => handleWallpaperChange(wallpaper.id)}
-                  className={`cursor-pointer rounded-xl overflow-hidden border-2 transition-all ${
-                    selectedWallpaper === wallpaper.id
-                      ? "border-primary scale-95"
-                      : "border-transparent"
-                  }`}
-                >
-                  <div
-                    className="aspect-[9/16] w-full"
-                    style={{ background: wallpaper.gradient }}
-                  />
-                  <div className="text-xs text-center py-1 bg-card">
-                    {wallpaper.name}
-                  </div>
-                </div>
-              ))}
-            </div>
-          </div>
+          <SettingRow 
+            icon={Edit2} 
+            label="Wallpaper" 
+            iconColor="hsl(270, 70%, 60%)"
+            onClick={() => navigate("/settings/wallpaper")}
+          />
         </SettingSection>
 
         {/* Device Information */}
