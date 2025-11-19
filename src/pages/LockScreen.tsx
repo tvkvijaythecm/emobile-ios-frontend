@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { StatusBar } from "@/components/StatusBar";
 import { toast } from "sonner";
@@ -7,9 +7,64 @@ const LockScreen = () => {
   const navigate = useNavigate();
   const [passcode, setPasscode] = useState("");
   const [shake, setShake] = useState(false);
+  const [currentTime, setCurrentTime] = useState(new Date());
+  const [wallpaper, setWallpaper] = useState(`linear-gradient(135deg, 
+    hsl(195, 100%, 50%) 0%,
+    hsl(180, 60%, 55%) 20%,
+    hsl(45, 100%, 65%) 40%,
+    hsl(25, 100%, 60%) 60%,
+    hsl(200, 80%, 60%) 80%,
+    hsl(210, 90%, 40%) 100%)`);
   const correctPasscode = "1234";
 
+  const wallpapers = [
+    `linear-gradient(135deg, 
+      hsl(195, 100%, 50%) 0%,
+      hsl(180, 60%, 55%) 20%,
+      hsl(45, 100%, 65%) 40%,
+      hsl(25, 100%, 60%) 60%,
+      hsl(200, 80%, 60%) 80%,
+      hsl(210, 90%, 40%) 100%)`,
+    `linear-gradient(135deg, 
+      hsl(330, 100%, 60%) 0%,
+      hsl(15, 100%, 60%) 50%,
+      hsl(45, 100%, 60%) 100%)`,
+    `linear-gradient(135deg, 
+      hsl(200, 90%, 40%) 0%,
+      hsl(200, 80%, 60%) 50%,
+      hsl(195, 100%, 50%) 100%)`,
+    `linear-gradient(135deg, 
+      hsl(140, 60%, 30%) 0%,
+      hsl(120, 50%, 50%) 50%,
+      hsl(90, 60%, 60%) 100%)`,
+    `linear-gradient(135deg, 
+      hsl(270, 80%, 40%) 0%,
+      hsl(290, 70%, 50%) 50%,
+      hsl(310, 80%, 60%) 100%)`
+  ];
+
+  useEffect(() => {
+    const timer = setInterval(() => {
+      setCurrentTime(new Date());
+    }, 1000);
+    return () => clearInterval(timer);
+  }, []);
+
+  useEffect(() => {
+    const savedWallpaper = localStorage.getItem('selectedWallpaper');
+    if (savedWallpaper) {
+      setWallpaper(wallpapers[parseInt(savedWallpaper)]);
+    }
+  }, []);
+
+  const playKeypadSound = () => {
+    const audio = new Audio('data:audio/wav;base64,UklGRnoGAABXQVZFZm10IBAAAAABAAEAQB8AAEAfAAABAAgAZGF0YQoGAACBhYqFbF1fdJivrJBhNjVgodDbq2EcBj+a2/LDciUFLIHO8tiJNwgZaLvt559NEAxQp+PwtmMcBjiR1/LMeSwFJHfH8N2QQAoUXrTp66hVFApGn+DyvmwhBWKs5PKxYhUEV6zn9b9rHwI7j9rzxnQmBSSE0fPZiToHEGS57OihTwwQUrTo8KtXDwZZrOTvvGchAzCJ0fPWgyoHJG+/8N+NQwoVZLjq7qVSEARPqOLxvW0bBSuD0PPSfSsGHXPD8duIOgsVZb3r8KdUDwRPqOPwvWojBS+A0fPWgiwGHG/A8N2PRAkTZbzs8KdUDAJPpuPwvm0bBSx+0PPXgywGH3PB8NySRAkSY77p8KlUEANQqOPuvmweBDCB0fLWgisGHm6/8N+RQwgUZLvq8KdUDAJNpuPxvmwbBTCA0fPWgywGH3PC8N2RQwkTZL3p8KlSEARRqOTuvWsjBDCF0fPWgiwHH3PA8N2SQwkSZb3s8KhTEARRp+PvvmwhBDGB0fPWhSwHHm+/8N+RQgkSZL3q8KhUDwRRp+TvvmwhBDCB0fPWhSwHH2/A8N6PQgkSZL7q8KhUDwRRp+TvvmwhBTCB0PPWhSwHHnC/8N6QQgkSZL7q8KhUDwRRp+TvvmwhBTCB0PPWhSwHHnC/8N6QQgkSZL7q8KhUDwRRp+TvvmwhBTCB0PPWhSwHHnC/8N6QQgkSZL7q8KhUDwRRp+TvvmwhBTCB0PPWhSwHHnC/8N6QQgkSZL7q8KhUDwRRp+TvvmwhBTCB0PPWhSwHHnC/8N6QQgkSZL7q8KhUDwRRp+TvvmwhBTCB0PPWhSwHHnC/8N6QQgkSZL7q8KhUDwRRp+TvvmwhBTCB0PPWhSwHHnC/8N6QQgkSZL7q8KhUDwRRp+TvvmwhBTCB0PPWhSwHHnC/8N6QQgkSZL7q8KhUDwRRp+TvvmwhBTCB0PPWhSwHHnC/8N6QQgkSZL7q8KhUDwRRp+TvvmwhBTCB0PPWhSwHHnC/8N6QQgkSZL7q8KhUDwRRp+TvvmwhBTCB0PPWhSwHHnC/8N6QQgkSZL7q8KhUDwRRp+TvvmwhBTCB0PPWhSwHHnC/8N6QQgkSZL7q8KhUDwRRp+TvvmwhBTCB0PPWhSwHHnC/8N6QQgkSZL7q8KhUDwRRp+TvvmwhBTCB0PPWhSwHHnC/8N6QQgkSZL7q8KhUDwRRp+TvvmwhBTCB0PPWhSwHHnC/8N6QQgkSZL7q8KhUDwRRp+TvvmwhBTCB0PPWhSwHHnC/8N6QQgkSZL7q8KhUDwRRp+TvvmwhBTCB0PPWhSwHHnC/8N6QQgkSZL7q8KhUDwRRp+TvvmwhBTCB0PPWhSwHHnC/8N6QQgkSZL7q8KhUDwRRp+TvvmwhBTCB0PPWhSwHHnC/8N6QQgkSZL7q8KhUDwRRp+TvvmwhBTCB0PPWhSwHHnC/8N6QQgkSZL7q8KhUDwRRp+TvvmwhBTCB0PPWhSwHHnC/8N6QQgkSZL7q8KhUDwRRp+TvvmwhBTCB0PPWhSwHHnC/8N6QQgkSZL7q8KhUDwRRp+TvvmwhBTCB0PPWhSwHHnC/8N6QQgkSZL7q8KhUDwRRp+TvvmwhBQ==');
+    audio.volume = 0.3;
+    audio.play().catch(() => {});
+  };
+
   const handleNumberClick = (num: string) => {
+    playKeypadSound();
     if (passcode.length < 4) {
       const newPasscode = passcode + num;
       setPasscode(newPasscode);
@@ -33,7 +88,21 @@ const LockScreen = () => {
   };
 
   const handleDelete = () => {
+    playKeypadSound();
     setPasscode(passcode.slice(0, -1));
+  };
+
+  const formatTime = () => {
+    const hours = currentTime.getHours();
+    const minutes = currentTime.getMinutes().toString().padStart(2, '0');
+    const period = hours >= 12 ? 'PM' : 'AM';
+    const displayHours = hours % 12 || 12;
+    return `${displayHours}:${minutes} ${period}`;
+  };
+
+  const formatDate = () => {
+    const options: Intl.DateTimeFormatOptions = { weekday: 'long', month: 'long', day: 'numeric' };
+    return currentTime.toLocaleDateString('en-US', options);
   };
 
   const numbers = [
@@ -48,15 +117,7 @@ const LockScreen = () => {
       {/* Wallpaper Background */}
       <div 
         className="absolute inset-0 z-0"
-        style={{
-          background: `linear-gradient(135deg, 
-            hsl(195, 100%, 50%) 0%,
-            hsl(180, 60%, 55%) 20%,
-            hsl(45, 100%, 65%) 40%,
-            hsl(25, 100%, 60%) 60%,
-            hsl(200, 80%, 60%) 80%,
-            hsl(210, 90%, 40%) 100%)`
-        }}
+        style={{ background: wallpaper }}
       />
 
       {/* Notch */}
@@ -66,16 +127,22 @@ const LockScreen = () => {
 
       {/* Lock Screen Content */}
       <div className="relative z-10 flex flex-col items-center justify-between h-screen pt-32 pb-12">
-        {/* eMobile Text */}
+        {/* Time, Date and eMobile Text */}
         <div className="text-center">
+          <div className="text-7xl font-light text-white mb-2">
+            {formatTime()}
+          </div>
+          <div className="text-lg font-medium text-white/90 mb-8">
+            {formatDate()}
+          </div>
           <h1 
-            className="text-8xl font-light text-white"
+            className="text-5xl font-light text-white"
             style={{ 
               fontFamily: "cursive",
               textShadow: "0 2px 20px rgba(0,0,0,0.1)"
             }}
           >
-            eMobile
+            Hello eMobile
           </h1>
         </div>
 
@@ -113,7 +180,7 @@ const LockScreen = () => {
                       }
                     }}
                     disabled={num === ""}
-                    className={`w-20 h-20 rounded-full text-white text-2xl font-light transition-all duration-100 active:scale-90 ${
+                    className={`w-20 h-20 rounded-full text-white text-2xl font-light transition-all duration-100 active:scale-90 flex items-center justify-center ${
                       num === "" 
                         ? "opacity-0 cursor-default" 
                         : "bg-white/20 backdrop-blur-xl hover:bg-white/30 active:bg-white/40"
