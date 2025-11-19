@@ -69,15 +69,15 @@ const SettingsApp = () => {
   };
 
   const deviceInfo = {
-    model: "iPhone 16 Pro",
-    version: "iOS 18.1",
+    model: "iNano eMobile",
+    version: "iEO 1.0",
     storage: {
       used: "128 GB",
-      total: "256 GB"
+      total: "1 TB"
     },
-    processor: "A18 Pro",
+    processor: "e14 Pro",
     battery: "98%",
-    serialNumber: "C02YW0EFJG5H"
+    serialNumber: "KS28102103"
   };
 
   const SettingRow = ({ 
