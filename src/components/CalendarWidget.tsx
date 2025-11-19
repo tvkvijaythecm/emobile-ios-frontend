@@ -36,9 +36,9 @@ export const CalendarWidget = () => {
   });
 
   return (
-    <div className="bg-white/80 backdrop-blur-xl rounded-3xl p-4 shadow-lg border border-white/30 col-span-2 row-span-2">
+    <div className="bg-white/80 backdrop-blur-xl rounded-3xl p-4 shadow-lg border border-white/30 col-span-2">
       <div className="text-red-500 text-xs font-semibold mb-1">{dayName}</div>
-      <div className="text-5xl font-light mb-2">{dayNumber}</div>
+      <div className="text-3xl font-light mb-2">{dayNumber}</div>
       {todayEvents.length > 0 ? (
         <div className="flex items-center gap-2 text-sm">
           <span className="text-red-500">🎉</span>
