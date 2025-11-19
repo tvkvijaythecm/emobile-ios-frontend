@@ -241,12 +241,14 @@ const SettingsApp = () => {
             label="Model" 
             value={deviceInfo.model}
             iconColor="hsl(240, 5%, 65%)"
+            showChevron={false}
           />
           <SettingRow 
             icon={Info} 
             label="Software Version" 
             value={deviceInfo.version}
             iconColor="hsl(240, 5%, 65%)"
+          showChevron={false}  
           />
           <SettingRow 
             icon={Info} 
@@ -271,12 +273,14 @@ const SettingsApp = () => {
             label="Storage" 
             value={deviceInfo.storage.total}
             iconColor="hsl(174, 100%, 39%)"
+            showChevron={false}
           />
           <SettingRow 
             icon={Battery} 
             label="Battery Health" 
             value={deviceInfo.battery}
             iconColor="hsl(142, 72%, 45%)"
+            showChevron={false}
           />
           <SettingRow 
             icon={Wifi} 
