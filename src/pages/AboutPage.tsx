@@ -61,7 +61,7 @@ const AboutPage = () => {
               <Mail className="w-5 h-5 text-primary mt-0.5" />
               <div>
                 <p className="text-sm font-medium text-foreground">Contact</p>
-                <p className="text-sm text-muted-foreground">developer@emobile.app</p>
+                <p className="text-sm text-muted-foreground">hello@suresh.app</p>
               </div>
             </div>
 
@@ -69,7 +69,7 @@ const AboutPage = () => {
               <Globe className="w-5 h-5 text-primary mt-0.5" />
               <div>
                 <p className="text-sm font-medium text-foreground">Website</p>
-                <p className="text-sm text-muted-foreground">www.emobile.app</p>
+                <p className="text-sm text-muted-foreground">https://suresh.app</p>
               </div>
             </div>
 
