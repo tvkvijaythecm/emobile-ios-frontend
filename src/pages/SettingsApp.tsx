@@ -269,7 +269,7 @@ const SettingsApp = () => {
           <SettingRow 
             icon={HardDrive} 
             label="Storage" 
-            value={`${deviceInfo.storage.used} / ${deviceInfo.storage.total}`}
+            value={deviceInfo.storage.total}
             iconColor="hsl(174, 100%, 39%)"
           />
           <SettingRow 
