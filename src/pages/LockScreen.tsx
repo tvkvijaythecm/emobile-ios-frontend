@@ -58,7 +58,7 @@ const LockScreen = () => {
   }, []);
 
   const playKeypadSound = () => {
-    const audio = new Audio('data:audio/wav;base64,UklGRnoGAABXQVZFZm10IBAAAAABAAEAQB8AAEAfAAABAAgAZGF0YQoGAACBhYqFbF1fdJivrJBhNjVgodDbq2EcBj+a2/LDciUFLIHO8tiJNwgZaLvt559NEAxQp+PwtmMcBjiR1/LMeSwFJHfH8N2QQAoUXrTp66hVFApGn+DyvmwhBWKs5PKxYhUEV6zn9b9rHwI7j9rzxnQmBSSE0fPZiToHEGS57OihTwwQUrTo8KtXDwZZrOTvvGchAzCJ0fPWgyoHJG+/8N+NQwoVZLjq7qVSEARPqOLxvW0bBSuD0PPSfSsGHXPD8duIOgsVZb3r8KdUDwRPqOPwvWojBS+A0fPWgiwGHG/A8N2PRAkTZbzs8KdUDAJPpuPwvm0bBSx+0PPXgywGH3PB8NySRAkSY77p8KlUEANQqOPuvmweBDCB0fLWgisGHm6/8N+RQwgUZLvq8KdUDAJNpuPxvmwbBTCA0fPWgywGH3PC8N2RQwkTZL3p8KlSEARRqOTuvWsjBDCF0fPWgiwHH3PA8N2SQwkSZb3s8KhTEARRp+PvvmwhBDGB0fPWhSwHHm+/8N+RQgkSZL3q8KhUDwRRp+TvvmwhBDCB0fPWhSwHH2/A8N6PQgkSZL7q8KhUDwRRp+TvvmwhBTCB0PPWhSwHHnC/8N6QQgkSZL7q8KhUDwRRp+TvvmwhBTCB0PPWhSwHHnC/8N6QQgkSZL7q8KhUDwRRp+TvvmwhBTCB0PPWhSwHHnC/8N6QQgkSZL7q8KhUDwRRp+TvvmwhBTCB0PPWhSwHHnC/8N6QQgkSZL7q8KhUDwRRp+TvvmwhBTCB0PPWhSwHHnC/8N6QQgkSZL7q8KhUDwRRp+TvvmwhBTCB0PPWhSwHHnC/8N6QQgkSZL7q8KhUDwRRp+TvvmwhBTCB0PPWhSwHHnC/8N6QQgkSZL7q8KhUDwRRp+TvvmwhBTCB0PPWhSwHHnC/8N6QQgkSZL7q8KhUDwRRp+TvvmwhBTCB0PPWhSwHHnC/8N6QQgkSZL7q8KhUDwRRp+TvvmwhBTCB0PPWhSwHHnC/8N6QQgkSZL7q8KhUDwRRp+TvvmwhBTCB0PPWhSwHHnC/8N6QQgkSZL7q8KhUDwRRp+TvvmwhBTCB0PPWhSwHHnC/8N6QQgkSZL7q8KhUDwRRp+TvvmwhBTCB0PPWhSwHHnC/8N6QQgkSZL7q8KhUDwRRp+TvvmwhBTCB0PPWhSwHHnC/8N6QQgkSZL7q8KhUDwRRp+TvvmwhBTCB0PPWhSwHHnC/8N6QQgkSZL7q8KhUDwRRp+TvvmwhBTCB0PPWhSwHHnC/8N6QQgkSZL7q8KhUDwRRp+TvvmwhBTCB0PPWhSwHHnC/8N6QQgkSZL7q8KhUDwRRp+TvvmwhBTCB0PPWhSwHHnC/8N6QQgkSZL7q8KhUDwRRp+TvvmwhBTCB0PPWhSwHHnC/8N6QQgkSZL7q8KhUDwRRp+TvvmwhBTCB0PPWhSwHHnC/8N6QQgkSZL7q8KhUDwRRp+TvvmwhBTCB0PPWhSwHHnC/8N6QQgkSZL7q8KhUDwRRp+TvvmwhBTCB0PPWhSwHHnC/8N6QQgkSZL7q8KhUDwRRp+TvvmwhBTCB0PPWhSwHHnC/8N6QQgkSZL7q8KhUDwRRp+TvvmwhBQ==');
+    const audio = new Audio('data:audio/wav;base64,UklGRnoGAABXQVZFZm10IBAAAAABAAEAQB8AAEAfAAABAAgAZGF0YQoGAACBhYqFbF1fdJivrJBhNjVgodDbq2EcBj+a2/LDciUFLIHO8tiJNwgZaLvt559NEAxQp+PwtmMcBjiR1/LMeSwFJHfH8N2QQAoUXrTp66hVFApGn+DyvmwhBWKs5PKxYhUEV6zn9b9rHwI7j9rzxnQmBSSE0fPZiToHEGS57OihTwwQUrTo8KtXDwZZrOTvvGchAzCJ0fPWgyoHJG+/8N+NQwoVZLjq7qVSEARPqOLxvW0bBSuD0PPSfSsGHXPD8duIOgsVZb3r8KdUDwRPqOPwvWojBS+A0fPWgiwGHG/A8N2PRAkTZbzs8KdUDAJPpuPwvm0bBSx+0PPXgywGH3PB8NySRAkSY77p8KlUEANQqOPuvmweBDCB0fLWgisGHm6/8N+RQwgUZLvq8KdUDAJNpuPxvmwbBTCA0fPWgywGH3PC8N2RQwkTZL3p8KlSEARRqOTuvWsjBDCF0fPWgiwHH3PA8N2SQwkSZb3s8KhTEARRp+PvvmwhBDGB0fPWhSwHHm+/8N+RQgkSZL3q8KhUDwRRp+TvvmwhBDCB0fPWhSwHH2/A8N6PQgkSZL7q8KhUDwRRp+TvvmwhBTCB0PPWhSwHHnC/8N6QQgkSZL7q8KhUDwRRp+TvvmwhBTCB0PPWhSwHHnC/8N6QQgkSZL7q8KhUDwRRp+TvvmwhBTCB0PPWhSwHHnC/8N6QQgkSZL7q8KhUDwRRp+TvvmwhBTCB0PPWhSwHHnC/8N6QQgkSZL7q8KhUDwRRp+TvvmwhBTCB0PPWhSwHHnC/8N6QQgkSZL7q8KhUDwRRp+TvvmwhBTCB0PPWhSwHHnC/8N6QQgkSZL7q8KhUDwRRp+TvvmwhBTCB0PPWhSwHHnC/8N6QQgkSZL7q8KhUDwRRp+TvvmwhBTCB0PPWhSwHHnC/8N6QQgkSZL7q8KhUDwRRp+TvvmwhBTCB0PPWhSwHHnC/8N6QQgkSZL7q8KhUDwRRp+TvvmwhBTCB0PPWhSwHHnC/8N6QQgkSZL7q8KhUDwRRp+TvvmwhBTCB0PPWhSwHHnC/8N6QQgkSZL7q8KhUDwRRp+TvvmwhBTCB0PPWhSwHHnC/8N6QQgkSZL7q8KhUDwRRp+TvvmwhBTCB0PPWhSwHHnC/8N6QQgkSZL7q8KhUDwRRp+TvvmwhBTCB0PPWhSwHHnC/8N6QQgkSZL7q8KhUDwRRp+TvvmwhBTCB0PPWhSwHHnC/8N6QQgkSZL7q8KhUDwRRp+TvvmwhBTCB0PPWhSwHHnC/8N6QQgkSZL7q8KhUDwRRp+TvvmwhBTCB0PPWhSwHHnC/8N6QQgkSZL7q8KhUDwRRp+TvvmwhBTCB0PPWhSwHHnC/8N6QQgkSZL7q8KhUDwRRp+TvvmwhBTCB0PPWhSwHHnC/8N6QQgkSZL7q8KhUDwRRp+TvvmwhBTCB0PPWhSwHHnC/8N6QQgkSZL7q8KhUDwRRp+TvvmwhBTCB0PPWhSwHHnC/8N6QQgkSZL7q8KhUDwRRp+TvvmwhBTCB0PPWhSwHHnC/8N6QQgkSZL7q8KhUDwRRp+TvvmwhBQ==');
     audio.volume = 0.3;
     audio.play().catch(() => {});
   };
@@ -166,9 +166,9 @@ const LockScreen = () => {
           </div>
 
           {/* Number Pad */}
-          <div className="space-y-4">
+          <div className="space-y-6">
             {numbers.map((row, rowIndex) => (
-              <div key={rowIndex} className="flex justify-center gap-16">
+              <div key={rowIndex} className="flex justify-center gap-8">
                 {row.map((num, colIndex) => (
                   <button
                     key={colIndex}
@@ -180,13 +180,46 @@ const LockScreen = () => {
                       }
                     }}
                     disabled={num === ""}
-                    className={`w-20 h-20 rounded-full text-white text-2xl font-light transition-all duration-100 active:scale-90 flex items-center justify-center ${
-                      num === "" 
-                        ? "opacity-0 cursor-default" 
-                        : "bg-white/20 backdrop-blur-xl hover:bg-white/30 active:bg-white/40"
-                    }`}
+                    className={`
+                      w-20 h-20 
+                      rounded-full 
+                      text-white 
+                      text-2xl 
+                      font-light 
+                      transition-all 
+                      duration-100 
+                      active:scale-90 
+                      flex 
+                      items-center 
+                      justify-center
+                      select-none
+                      ${
+                        num === "" 
+                          ? "opacity-0 cursor-default pointer-events-none" 
+                          : "bg-white/20 backdrop-blur-xl hover:bg-white/30 active:bg-white/40 border border-white/10 shadow-lg"
+                      }
+                    `}
+                    style={{
+                      aspectRatio: "1/1"
+                    }}
                   >
-                    {num}
+                    {num === "⌫" ? (
+                      <svg 
+                        className="w-8 h-8 text-white" 
+                        fill="none" 
+                        stroke="currentColor" 
+                        viewBox="0 0 24 24"
+                      >
+                        <path 
+                          strokeLinecap="round" 
+                          strokeLinejoin="round" 
+                          strokeWidth={2} 
+                          d="M12 14l2-2m0 0l2-2m-2 2l-2-2m2 2l2 2M3 12l6.414 6.414a2 2 0 001.414.586H19a2 2 0 002-2V7a2 2 0 00-2-2h-8.172a2 2 0 00-1.414.586L3 12z" 
+                        />
+                      </svg>
+                    ) : (
+                      num
+                    )}
                   </button>
                 ))}
               </div>
