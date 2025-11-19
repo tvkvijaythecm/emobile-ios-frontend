@@ -66,31 +66,24 @@ export const WeatherWidget = () => {
   }, 999);
 
   return (
-    <div className="bg-blue-500/80 backdrop-blur-xl rounded-3xl p-4 shadow-lg border border-white/20 col-span-4 text-white">
-      <div className="flex items-center justify-between mb-3">
+    <div className="col-span-2 bg-gradient-to-br from-blue-400 to-blue-600 rounded-3xl p-4 text-white shadow-lg">
+      <div className="flex items-center justify-between">
         <div>
-          <div className="flex items-center gap-1 mb-1">
-            <span className="text-sm">Kuala Lumpur</span>
-            <MapPin className="w-3 h-3" />
-          </div>
-          <div className="text-5xl font-light">{currentTemp}°</div>
+          <div className="text-3xl font-light">{Math.round(data?.current?.temperature_2m ?? 28)}°</div>
+          <div className="text-xs opacity-90 mt-1">{getWeatherDescription(data?.current?.weather_code ?? 0)}</div>
         </div>
-        <div className="text-right">
-          {getWeatherIcon(currentWeatherCode)}
-          <div className="text-lg">{getWeatherDescription(currentWeatherCode)}</div>
-          <div className="text-sm opacity-80">H:{highTemp}° L:{lowTemp}°</div>
+        <div>
+          {getWeatherIcon(data?.current?.weather_code ?? 0)}
         </div>
       </div>
-      <div className="flex justify-between text-center text-sm border-t border-white/30 pt-3">
-        {hours.map((hour, i) => (
-          <div key={i} className="flex flex-col items-center gap-1">
-            <div className="text-xs opacity-80">{hour.time}</div>
-            <div className="text-lg">{hour.code === 0 ? "☀️" : hour.code <= 3 ? "☁️" : "🌧️"}</div>
-            <div className="text-sm">{hour.temp}</div>
-          </div>
-        ))}
+      
+      <div className="text-xs opacity-75 mt-2">Kuala Lumpur</div>
+      
+      {/* High/Low */}
+      <div className="flex gap-3 mt-3 text-xs opacity-75">
+        <span>H: {data?.hourly ? Math.round(Math.max(...data.hourly.temperature_2m.slice(0, 24))) : 32}°</span>
+        <span>L: {data?.hourly ? Math.round(Math.min(...data.hourly.temperature_2m.slice(0, 24))) : 24}°</span>
       </div>
-      <div className="text-xs text-center mt-2 opacity-80">Weather</div>
     </div>
   );
 };

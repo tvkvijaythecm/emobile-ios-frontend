@@ -4,6 +4,7 @@ import { AppIcon } from "@/components/AppIcon";
 import { SearchBar } from "@/components/SearchBar";
 import { CalendarWidget } from "@/components/CalendarWidget";
 import { WeatherWidget } from "@/components/WeatherWidget";
+import { useEffect, useState } from "react";
 import { 
   Lock, 
   Calendar, 
@@ -25,6 +26,47 @@ import {
 } from "lucide-react";
 
 const Home = () => {
+  const [wallpaper, setWallpaper] = useState(`linear-gradient(135deg, 
+    hsl(195, 100%, 50%) 0%,
+    hsl(180, 60%, 55%) 20%,
+    hsl(45, 100%, 65%) 40%,
+    hsl(25, 100%, 60%) 60%,
+    hsl(200, 80%, 60%) 80%,
+    hsl(210, 90%, 40%) 100%)`);
+
+  const wallpapers = [
+    `linear-gradient(135deg, 
+      hsl(195, 100%, 50%) 0%,
+      hsl(180, 60%, 55%) 20%,
+      hsl(45, 100%, 65%) 40%,
+      hsl(25, 100%, 60%) 60%,
+      hsl(200, 80%, 60%) 80%,
+      hsl(210, 90%, 40%) 100%)`,
+    `linear-gradient(135deg, 
+      hsl(330, 100%, 60%) 0%,
+      hsl(15, 100%, 60%) 50%,
+      hsl(45, 100%, 60%) 100%)`,
+    `linear-gradient(135deg, 
+      hsl(200, 90%, 40%) 0%,
+      hsl(200, 80%, 60%) 50%,
+      hsl(195, 100%, 50%) 100%)`,
+    `linear-gradient(135deg, 
+      hsl(140, 60%, 30%) 0%,
+      hsl(120, 50%, 50%) 50%,
+      hsl(90, 60%, 60%) 100%)`,
+    `linear-gradient(135deg, 
+      hsl(270, 80%, 40%) 0%,
+      hsl(290, 70%, 50%) 50%,
+      hsl(310, 80%, 60%) 100%)`
+  ];
+
+  useEffect(() => {
+    const savedWallpaper = localStorage.getItem('selectedWallpaper');
+    if (savedWallpaper) {
+      setWallpaper(wallpapers[parseInt(savedWallpaper)]);
+    }
+  }, []);
+
   const apps = [
     { icon: Lock, label: "Lock", color: "hsl(240, 5%, 15%)", route: "/" },
     { icon: Calendar, label: "Calendar", color: "hsl(0, 92%, 60%)", route: "/app/calendar" },
@@ -42,7 +84,6 @@ const Home = () => {
     { icon: Heart, label: "Health", color: "hsl(0, 92%, 60%)", route: "/app/health" },
     { icon: Calculator, label: "Calculator", color: "hsl(25, 100%, 60%)", route: "/app/calculator" },
     { icon: Settings, label: "Settings", color: "hsl(240, 5%, 65%)", route: "/app/settings" },
-    { icon: Globe, label: "Browser", color: "hsl(211, 100%, 50%)", route: "/app/browser" },
   ];
 
   return (
@@ -50,15 +91,7 @@ const Home = () => {
       {/* Wallpaper Background */}
       <div 
         className="absolute inset-0 z-0"
-        style={{
-          background: `linear-gradient(135deg, 
-            hsl(195, 100%, 50%) 0%,
-            hsl(180, 60%, 55%) 20%,
-            hsl(45, 100%, 65%) 40%,
-            hsl(25, 100%, 60%) 60%,
-            hsl(200, 80%, 60%) 80%,
-            hsl(210, 90%, 40%) 100%)`
-        }}
+        style={{ background: wallpaper }}
       />
 
       {/* Notch */}
@@ -71,11 +104,11 @@ const Home = () => {
         {/* Widgets Grid */}
         <div className="grid grid-cols-4 gap-3 mb-6">
           <CalendarWidget />
+          <WeatherWidget />
           <AppIcon icon={Lock} label="Lock" color="hsl(240, 5%, 15%)" route="/" />
           <AppIcon icon={Calendar} label="Calendar" color="hsl(0, 92%, 60%)" route="/app/calendar" />
           <AppIcon icon={Image} label="Photos" color="hsl(211, 100%, 50%)" route="/app/photos" />
           <AppIcon icon={Camera} label="Camera" color="hsl(240, 5%, 65%)" route="/app/camera" />
-          <WeatherWidget />
         </div>
 
         {/* Apps Grid */}
