@@ -1,16 +1,54 @@
 import { useNavigate } from "react-router-dom";
-import { ArrowLeft, ChevronRight, Moon, Sun, Smartphone, Info, HardDrive, Cpu, Battery, Wifi, Edit2, Image as ImageIcon } from "lucide-react";
+import { ArrowLeft, ChevronRight, Moon, Sun, Smartphone, Info, HardDrive, Cpu, Battery, Wifi, Edit2, Image as ImageIcon, Globe, Type, SunDim, Volume2 } from "lucide-react";
 import { StatusBar } from "@/components/StatusBar";
 import { useTheme } from "next-themes";
 import { Switch } from "@/components/ui/switch";
 import { Input } from "@/components/ui/input";
-import { useState } from "react";
+import { Slider } from "@/components/ui/slider";
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
+import { useState, useEffect } from "react";
 
 const SettingsApp = () => {
   const navigate = useNavigate();
   const { theme, setTheme } = useTheme();
   const [deviceName, setDeviceName] = useState("My iPhone");
   const [isEditingName, setIsEditingName] = useState(false);
+  const [language, setLanguage] = useState("en");
+  const [textSize, setTextSize] = useState([16]);
+  const [brightness, setBrightness] = useState([75]);
+  const [volume, setVolume] = useState([50]);
+
+  useEffect(() => {
+    const savedLanguage = localStorage.getItem("language");
+    const savedTextSize = localStorage.getItem("textSize");
+    const savedBrightness = localStorage.getItem("brightness");
+    const savedVolume = localStorage.getItem("volume");
+    
+    if (savedLanguage) setLanguage(savedLanguage);
+    if (savedTextSize) setTextSize([parseInt(savedTextSize)]);
+    if (savedBrightness) setBrightness([parseInt(savedBrightness)]);
+    if (savedVolume) setVolume([parseInt(savedVolume)]);
+  }, []);
+
+  const handleLanguageChange = (value: string) => {
+    setLanguage(value);
+    localStorage.setItem("language", value);
+  };
+
+  const handleTextSizeChange = (value: number[]) => {
+    setTextSize(value);
+    localStorage.setItem("textSize", value[0].toString());
+  };
+
+  const handleBrightnessChange = (value: number[]) => {
+    setBrightness(value);
+    localStorage.setItem("brightness", value[0].toString());
+  };
+
+  const handleVolumeChange = (value: number[]) => {
+    setVolume(value);
+    localStorage.setItem("volume", value[0].toString());
+  };
 
   const handleBack = () => {
     navigate("/home");
@@ -220,6 +258,109 @@ const SettingsApp = () => {
             iconColor="hsl(211, 100%, 50%)"
             showChevron={false}
           />
+        </SettingSection>
+
+        {/* Accessibility Settings */}
+        <SettingSection title="Accessibility">
+          {/* Language Selection */}
+          <div className="py-3 px-4">
+            <div className="flex items-center justify-between mb-3">
+              <div className="flex items-center gap-3">
+                <div 
+                  className="w-8 h-8 rounded-lg flex items-center justify-center"
+                  style={{ backgroundColor: "hsl(211, 100%, 50%)" }}
+                >
+                  <Globe className="w-5 h-5 text-white" />
+                </div>
+                <span className="text-foreground">Language</span>
+              </div>
+            </div>
+            <Select value={language} onValueChange={handleLanguageChange}>
+              <SelectTrigger className="w-full bg-background">
+                <SelectValue placeholder="Select Language" />
+              </SelectTrigger>
+              <SelectContent className="bg-card border-border z-50">
+                <SelectItem value="en">English</SelectItem>
+                <SelectItem value="es">Español</SelectItem>
+                <SelectItem value="fr">Français</SelectItem>
+                <SelectItem value="de">Deutsch</SelectItem>
+                <SelectItem value="zh">中文</SelectItem>
+                <SelectItem value="ja">日本語</SelectItem>
+              </SelectContent>
+            </Select>
+          </div>
+
+          {/* Text Size Controller */}
+          <div className="py-3 px-4 border-t border-border">
+            <div className="flex items-center justify-between mb-3">
+              <div className="flex items-center gap-3">
+                <div 
+                  className="w-8 h-8 rounded-lg flex items-center justify-center"
+                  style={{ backgroundColor: "hsl(280, 70%, 60%)" }}
+                >
+                  <Type className="w-5 h-5 text-white" />
+                </div>
+                <span className="text-foreground">Text Size</span>
+              </div>
+              <span className="text-muted-foreground text-sm">{textSize[0]}px</span>
+            </div>
+            <Slider
+              value={textSize}
+              onValueChange={handleTextSizeChange}
+              min={12}
+              max={24}
+              step={1}
+              className="w-full"
+            />
+          </div>
+
+          {/* Brightness Controller */}
+          <div className="py-3 px-4 border-t border-border">
+            <div className="flex items-center justify-between mb-3">
+              <div className="flex items-center gap-3">
+                <div 
+                  className="w-8 h-8 rounded-lg flex items-center justify-center"
+                  style={{ backgroundColor: "hsl(45, 100%, 51%)" }}
+                >
+                  <SunDim className="w-5 h-5 text-white" />
+                </div>
+                <span className="text-foreground">Brightness</span>
+              </div>
+              <span className="text-muted-foreground text-sm">{brightness[0]}%</span>
+            </div>
+            <Slider
+              value={brightness}
+              onValueChange={handleBrightnessChange}
+              min={0}
+              max={100}
+              step={1}
+              className="w-full"
+            />
+          </div>
+
+          {/* Volume Controller */}
+          <div className="py-3 px-4 border-t border-border">
+            <div className="flex items-center justify-between mb-3">
+              <div className="flex items-center gap-3">
+                <div 
+                  className="w-8 h-8 rounded-lg flex items-center justify-center"
+                  style={{ backgroundColor: "hsl(0, 92%, 60%)" }}
+                >
+                  <Volume2 className="w-5 h-5 text-white" />
+                </div>
+                <span className="text-foreground">Volume</span>
+              </div>
+              <span className="text-muted-foreground text-sm">{volume[0]}%</span>
+            </div>
+            <Slider
+              value={volume}
+              onValueChange={handleVolumeChange}
+              min={0}
+              max={100}
+              step={1}
+              className="w-full"
+            />
+          </div>
         </SettingSection>
 
         {/* General Settings */}
