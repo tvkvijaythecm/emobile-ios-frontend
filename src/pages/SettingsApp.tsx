@@ -281,11 +281,9 @@ const SettingsApp = () => {
               </SelectTrigger>
               <SelectContent className="bg-card border-border z-50">
                 <SelectItem value="en">English</SelectItem>
-                <SelectItem value="es">Español</SelectItem>
-                <SelectItem value="fr">Français</SelectItem>
-                <SelectItem value="de">Deutsch</SelectItem>
-                <SelectItem value="zh">中文</SelectItem>
-                <SelectItem value="ja">日本語</SelectItem>
+                <SelectItem value="ms">Malay</SelectItem>
+                <SelectItem value="zh">Chinese</SelectItem>
+                <SelectItem value="ta">Tamil</SelectItem>
               </SelectContent>
             </Select>
           </div>
