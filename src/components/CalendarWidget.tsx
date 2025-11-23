@@ -36,22 +36,22 @@ export const CalendarWidget = () => {
   });
 
   return (
-    <div className="bg-white/80 backdrop-blur-xl rounded-3xl p-4 shadow-lg border border-white/30 col-span-2">
-      <div className="text-red-500 text-xs font-semibold mb-1">{dayName}</div>
-      <div className="text-3xl font-light mb-2">{dayNumber}</div>
+    <div className="bg-white/80 backdrop-blur-xl rounded-2xl sm:rounded-3xl p-2.5 sm:p-3 md:p-4 shadow-lg border border-white/30 col-span-2">
+      <div className="text-red-500 text-[10px] sm:text-xs font-semibold mb-0.5 sm:mb-1">{dayName}</div>
+      <div className="text-2xl sm:text-3xl md:text-4xl font-light mb-1.5 sm:mb-2">{dayNumber}</div>
       {todayEvents.length > 0 ? (
-        <div className="flex items-center gap-2 text-sm">
-          <span className="text-red-500">🎉</span>
-          <span className="text-foreground/70 font-semibold">{todayEvents[0]}</span>
+        <div className="flex items-center gap-1.5 sm:gap-2 text-xs sm:text-sm">
+          <span className="text-red-500 text-sm sm:text-base">🎉</span>
+          <span className="text-foreground/70 font-semibold truncate">{todayEvents[0]}</span>
         </div>
       ) : upcomingEvents.length > 0 ? (
-        <div className="flex items-center gap-2 text-sm">
-          <span className="text-blue-500">📅</span>
-          <span className="text-foreground/70">{upcomingEvents.length} upcoming</span>
+        <div className="flex items-center gap-1.5 sm:gap-2 text-xs sm:text-sm">
+          <span className="text-blue-500 text-sm sm:text-base">📅</span>
+          <span className="text-foreground/70 truncate">{upcomingEvents.length} upcoming</span>
         </div>
       ) : (
-        <div className="flex items-center gap-2 text-sm">
-          <span className="text-blue-500">✓</span>
+        <div className="flex items-center gap-1.5 sm:gap-2 text-xs sm:text-sm">
+          <span className="text-blue-500 text-sm sm:text-base">✓</span>
           <span className="text-foreground/70">No events</span>
         </div>
       )}
