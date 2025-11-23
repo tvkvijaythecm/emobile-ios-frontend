@@ -66,21 +66,21 @@ export const WeatherWidget = () => {
   }, 999);
 
   return (
-    <div className="col-span-2 bg-gradient-to-br from-blue-400 to-blue-600 rounded-3xl p-4 text-white shadow-lg">
+    <div className="col-span-2 bg-gradient-to-br from-blue-400 to-blue-600 rounded-2xl sm:rounded-3xl p-2.5 sm:p-3 md:p-4 text-white shadow-lg">
       <div className="flex items-center justify-between">
         <div>
-          <div className="text-3xl font-light">{Math.round(data?.current?.temperature_2m ?? 28)}°</div>
-          <div className="text-xs opacity-90 mt-1">{getWeatherDescription(data?.current?.weather_code ?? 0)}</div>
+          <div className="text-2xl sm:text-3xl md:text-4xl font-light">{Math.round(data?.current?.temperature_2m ?? 28)}°</div>
+          <div className="text-[10px] sm:text-xs opacity-90 mt-0.5 sm:mt-1">{getWeatherDescription(data?.current?.weather_code ?? 0)}</div>
         </div>
-        <div>
+        <div className="scale-75 sm:scale-90 md:scale-100">
           {getWeatherIcon(data?.current?.weather_code ?? 0)}
         </div>
       </div>
       
-      <div className="text-xs opacity-75 mt-2">Kuala Lumpur</div>
+      <div className="text-[10px] sm:text-xs opacity-75 mt-1.5 sm:mt-2">Kuala Lumpur</div>
       
       {/* High/Low */}
-      <div className="flex gap-3 mt-3 text-xs opacity-75">
+      <div className="flex gap-2 sm:gap-3 mt-2 sm:mt-3 text-[10px] sm:text-xs opacity-75">
         <span>H: {data?.hourly ? Math.round(Math.max(...data.hourly.temperature_2m.slice(0, 24))) : 32}°</span>
         <span>L: {data?.hourly ? Math.round(Math.min(...data.hourly.temperature_2m.slice(0, 24))) : 24}°</span>
       </div>

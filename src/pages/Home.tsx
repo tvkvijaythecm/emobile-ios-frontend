@@ -95,14 +95,14 @@ const Home = () => {
       />
 
       {/* Notch */}
-      <div className="absolute top-0 left-1/2 -translate-x-1/2 w-40 h-8 bg-black rounded-b-3xl z-50" />
+      <div className="absolute top-0 left-1/2 -translate-x-1/2 w-28 h-6 sm:w-32 sm:h-7 md:w-40 md:h-8 bg-black rounded-b-3xl z-50" />
 
       <StatusBar />
 
       {/* Main Content */}
-      <div className="relative z-10 pt-16 pb-32 px-6">
+      <div className="relative z-10 pt-14 pb-28 px-4 sm:pt-16 sm:pb-32 sm:px-6 md:pt-20 md:pb-36">
         {/* Widgets Grid */}
-        <div className="grid grid-cols-4 gap-3 mb-6">
+        <div className="grid grid-cols-4 gap-2 sm:gap-3 md:gap-4 mb-4 sm:mb-6">
           <CalendarWidget />
           <WeatherWidget />
           <AppIcon icon={Lock} label="Lock" color="hsl(240, 5%, 15%)" route="/" />
@@ -112,7 +112,7 @@ const Home = () => {
         </div>
 
         {/* Apps Grid */}
-        <div className="grid grid-cols-4 gap-y-6 gap-x-3 mb-6">
+        <div className="grid grid-cols-4 gap-y-4 gap-x-2 sm:gap-y-6 sm:gap-x-3 md:gap-y-8 md:gap-x-4 mb-4 sm:mb-6">
           {apps.slice(4).map((app, index) => (
             <AppIcon
               key={index}
@@ -130,7 +130,7 @@ const Home = () => {
       <DockBar />
 
       {/* Home Indicator */}
-      <div className="absolute bottom-2 left-1/2 -translate-x-1/2 w-32 h-1 bg-foreground/30 rounded-full" />
+      <div className="absolute bottom-2 left-1/2 -translate-x-1/2 w-24 h-1 sm:w-28 sm:h-1 md:w-32 md:h-1 bg-foreground/30 rounded-full" />
     </div>
   );
 };
