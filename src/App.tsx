@@ -4,6 +4,7 @@ import { TooltipProvider } from "@/components/ui/tooltip";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { ThemeProvider } from "next-themes";
+import BootScreen from "./pages/BootScreen";
 import LockScreen from "./pages/LockScreen";
 import Home from "./pages/Home";
 import AppPage from "./pages/AppPage";
@@ -29,7 +30,8 @@ const App = () => (
         <Sonner />
         <BrowserRouter>
           <Routes>
-            <Route path="/" element={<LockScreen />} />
+            <Route path="/" element={<BootScreen />} />
+            <Route path="/lock" element={<LockScreen />} />
             <Route path="/home" element={<Home />} />
           <Route path="/app/settings" element={<SettingsApp />} />
           <Route path="/app/wallpaper" element={<WallpaperPage />} />
