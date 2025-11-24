@@ -5,6 +5,7 @@ import { SearchBar } from "@/components/SearchBar";
 import { CalendarWidget } from "@/components/CalendarWidget";
 import { WeatherWidget } from "@/components/WeatherWidget";
 import { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 import { 
   Lock, 
   Calendar, 
@@ -22,10 +23,12 @@ import {
   Heart,
   Calculator,
   Settings,
-  Globe
+  Globe,
+  Loader2
 } from "lucide-react";
 
 const Home = () => {
+  const navigate = useNavigate();
   const [wallpaper, setWallpaper] = useState(`linear-gradient(135deg, 
     hsl(195, 100%, 50%) 0%,
     hsl(180, 60%, 55%) 20%,
@@ -33,6 +36,8 @@ const Home = () => {
     hsl(25, 100%, 60%) 60%,
     hsl(200, 80%, 60%) 80%,
     hsl(210, 90%, 40%) 100%)`);
+  const [isShuttingDown, setIsShuttingDown] = useState(false);
+  const [shutdownProgress, setShutdownProgress] = useState(0);
 
   const wallpapers = [
     `linear-gradient(135deg, 
@@ -66,6 +71,26 @@ const Home = () => {
       setWallpaper(wallpapers[parseInt(savedWallpaper)]);
     }
   }, []);
+
+  useEffect(() => {
+    if (isShuttingDown) {
+      const interval = setInterval(() => {
+        setShutdownProgress((prev) => {
+          if (prev >= 100) {
+            clearInterval(interval);
+            setTimeout(() => navigate("/"), 300);
+            return 100;
+          }
+          return prev + 2;
+        });
+      }, 100);
+      return () => clearInterval(interval);
+    }
+  }, [isShuttingDown, navigate]);
+
+  const handlePowerOff = () => {
+    setIsShuttingDown(true);
+  };
 
   const apps = [
     { icon: Lock, label: "Lock", color: "hsl(240, 5%, 15%)", route: "/" },
@@ -128,6 +153,29 @@ const Home = () => {
       </div>
 
       <DockBar />
+
+      {/* Power Button - Right Side */}
+      <button
+        onClick={handlePowerOff}
+        className="absolute right-0 top-32 sm:top-36 md:top-40 w-1 h-12 sm:h-14 md:h-16 bg-white/20 hover:bg-white/30 active:bg-white/40 transition-all duration-150 z-50 rounded-l-sm border-l border-white/10"
+        aria-label="Power off"
+      />
+
+      {/* Shutdown Overlay */}
+      {isShuttingDown && (
+        <div className="absolute inset-0 z-[100] flex items-center justify-center bg-black/60 backdrop-blur-lg animate-fade-in">
+          <div className="flex flex-col items-center gap-6">
+            <Loader2 className="w-12 h-12 sm:w-16 sm:h-16 md:w-20 md:h-20 text-white animate-spin" />
+            <div className="w-32 sm:w-40 md:w-48 h-1 bg-white/20 rounded-full overflow-hidden">
+              <div
+                className="h-full bg-white transition-all duration-100 ease-linear"
+                style={{ width: `${shutdownProgress}%` }}
+              />
+            </div>
+            <p className="text-white text-sm sm:text-base md:text-lg font-light">Shutting down...</p>
+          </div>
+        </div>
+      )}
 
       {/* Home Indicator */}
       <div className="absolute bottom-2 left-1/2 -translate-x-1/2 w-24 h-1 sm:w-28 sm:h-1 md:w-32 md:h-1 bg-foreground/30 rounded-full" />
