@@ -35,6 +35,12 @@ All colors MUST be HSL.
     --glass-bg: rgba(255, 255, 255, 0.25);
     --glass-border: rgba(255, 255, 255, 0.3);
     
+    /* Browser-specific */
+    --browser-toolbar: 0 0% 100% / 0.8;
+    --browser-toolbar-foreground: 220 15% 20%;
+    --site-card: 0 0% 100% / 0.6;
+    --site-card-hover: 217 91% 60% / 0.1;
+    
     --card: 0 0% 100%;
     --card-foreground: 0 0% 5%;
 
@@ -89,6 +95,12 @@ All colors MUST be HSL.
     --border: 0 0% 20%;
     --input: 0 0% 20%;
     --ring: 211 100% 50%;
+    
+    /* Browser-specific dark mode */
+    --browser-toolbar: 220 18% 14% / 0.8;
+    --browser-toolbar-foreground: 210 40% 98%;
+    --site-card: 220 16% 20% / 0.5;
+    --site-card-hover: 217 91% 60% / 0.2;
   }
 }
 
